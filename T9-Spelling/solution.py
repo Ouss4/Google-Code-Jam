@@ -1,29 +1,23 @@
 def toT9(text):
 
-    translator = {2:'abc', 3:'def', 4:'ghi', 5:'jkl', 6:'mno',
-                  7:'pqrs', 8:'tuv', 9:'wxyz'}
-
+    translator = {0: ' ', 2:'abc', 3:'def', 4:'ghi', 5:'jkl',
+                  6:'mno', 7:'pqrs', 8:'tuv', 9:'wxyz'}
+                  
     output = ""
     oldKey = -1
 
     for c in text:
-        if c == " ":
-            if oldKey == 0:
-                output += " "
-            output += "0"
-            oldKey = 0
-        else:
-            for key, val in translator.items():
-                i = val.find(c) + 1
-                if i > 0:
-                    if oldKey == key:
-                        output += " "
-                    output += str(key) * i
-                    oldKey = key
+        for key, val in translator.items():
+            i = val.find(c) + 1
+            if i > 0:
+                if oldKey == key:
+                    output += " "
+                output += str(key) * i
+                oldKey = key
     return output
 
 
-fileName = "C-large-practice.in"
+fileName = "small.txt"
 with open(fileName, "r") as inputFile:
     i = 1
     # Read the file and remove the first element and the last \n
@@ -33,3 +27,4 @@ with open(fileName, "r") as inputFile:
         t9Text = toT9(text)
         print("Case #{}: {}".format(i, t9Text))
         i += 1
+        
