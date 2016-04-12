@@ -17,7 +17,7 @@ def toT9(text):
     return output
 
 
-fileName = "small.txt"
+fileName = "C-large-practice.in"
 with open(fileName, "r") as inputFile:
     i = 1
     # Read the file and remove the first element and the last \n
